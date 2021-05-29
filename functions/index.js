@@ -43,10 +43,11 @@ exports.updateGameAndInviteUsers = functions.firestore
       dataAfter.listOfPlayers.forEach((player) => {
         const invite = admin.firestore();
 
-        if (dataAfter.accepted == false) {
+        if (player.accepted == false) {
           const doc = {
             accepted: false,
           };
+          console.log("Data:", doc);
           return invite
               .collection("users")
               .doc(player.uid)
